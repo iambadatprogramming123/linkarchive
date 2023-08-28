@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- code written entirely by chatgpt with a little updates lmao -->
 <html>
 <head>
     <title>linkarchive.com</title>
@@ -37,7 +36,6 @@
     <h1 id="notification" class="notification" style="display:none;">A link posted by you was deleted.</h1>
     
     <script>
-        // Load existing links from localStorage
         let links = JSON.parse(localStorage.getItem('links')) || [];
         let deletedLinks = JSON.parse(localStorage.getItem('deletedLinks')) || [];
         
@@ -68,16 +66,15 @@
                 document.getElementById("loginContainer").style.display = "none";
                 document.getElementById("linkContainer").style.display = "block";
                 
-                // Check if user has a deleted link and show notification
                 const hasDeletedLink = deletedLinks.some(linkData => linkData.username === username);
                 if (hasDeletedLink) {
                     document.getElementById("notification").style.display = "block";
                     setTimeout(() => {
                         document.getElementById("notification").style.display = "none";
-                    }, 1500); // Hide after 5 seconds
+                    }, 1500); // Hide after 1.5 seconds
                 }
                 
-                renderLinks(); // Update the link list after logging in
+                renderLinks();
             }
         }
         
@@ -88,7 +85,7 @@
             if (link) {
                 links.push({ username, link });
                 localStorage.setItem('links', JSON.stringify(links));
-                renderLinks(); // Update the link list after submitting
+                renderLinks();
             }
         }
         
@@ -102,14 +99,13 @@
 
                 links.splice(index, 1);
                 localStorage.setItem('links', JSON.stringify(links));
-                renderLinks(); // Update the link list after deleting
+                renderLinks();
 
-                // Check if deleted link belongs to current user and show notification
                 if (linkData.username === loggedInUsername) {
                     document.getElementById("notification").style.display = "block";
                     setTimeout(() => {
                         document.getElementById("notification").style.display = "none";
-                    }, 1500); // Hide after 5 seconds
+                    }, 1500); // Hide after 1.5 seconds
                 }
             }
         }
@@ -119,16 +115,15 @@
             document.getElementById("loginContainer").style.display = "none";
             document.getElementById("linkContainer").style.display = "block";
             
-            // Check if user has a deleted link and show notification
             const hasDeletedLink = deletedLinks.some(linkData => linkData.username === storedUsername);
             if (hasDeletedLink) {
                 document.getElementById("notification").style.display = "block";
                 setTimeout(() => {
                     document.getElementById("notification").style.display = "none";
-                }, 1500); // Hide after 5 seconds
+                }, 1500); // Hide after 1.5 seconds
             }
             
-            renderLinks(); // Update the link list for the logged-in user
+            renderLinks();
         }
     </script>
 </body>
