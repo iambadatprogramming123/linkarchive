@@ -40,6 +40,7 @@
         let deletedLinks = JSON.parse(localStorage.getItem('deletedLinks')) || [];
         
         function renderLinks() {
+            console.log("rendering links");
             const linkList = document.getElementById("linkList");
             linkList.innerHTML = '';
             
